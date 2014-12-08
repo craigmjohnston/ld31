@@ -29,6 +29,7 @@ public class RespawnShips : MonoBehaviour {
 	    if (FindObjectOfType<PlayerShip>() == null && playerSpawnTimer <= 0) {
 	        var player = (PlayerShip)Instantiate(playerShipPrefab);
 	        playerSpawnTimer = 0;
+	        player.homeBase = playerBase;
 	    }
         if (FindObjectOfType<AIShip>() == null && aiSpawnTimer <= 0) {
             var enemy = (AIShip)Instantiate(aiShipPrefab);

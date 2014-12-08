@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 using System.Collections;
 
 public class Bullet : MonoBehaviour {
@@ -9,6 +10,7 @@ public class Bullet : MonoBehaviour {
     public float timeout;
 
     public Transform mothership;
+    public HomeBase homeBase;
 
     protected float timeoutTimer;
     protected bool targeted = false;
@@ -55,7 +57,7 @@ public class Bullet : MonoBehaviour {
 	        //Destroy(gameObject);
 	    }
 	    if (!targeted) {
-	        Collider[] harvesters = Physics.OverlapSphere(transform.position, 0.4f, harvesterLayer);
+	        Collider[] harvesters = Physics.OverlapSphere(transform.position, 0.4f, harvesterLayer).Where(c => c.GetComponent<Harvester>().homeBase != homeBase).ToArray();
 	        foreach (Collider harvester in harvesters) {
 	            targeted = true;
 	            direction = harvesters[0].transform.position - transform.position;

@@ -140,6 +140,7 @@ public class AIShip : MonoBehaviour {
             var bullet = (Bullet)Instantiate(bulletPrefab, transform.position + transform.up * 0.25f + transform.right * Random.Range(-0.1f, 0.1f), Quaternion.identity);
             bullet.direction = velocity.normalized;
             bullet.mothership = transform;
+            bullet.homeBase = homeBase;
             //audio.PlayOneShot(shootSfx, 0.4f);
         }
     }

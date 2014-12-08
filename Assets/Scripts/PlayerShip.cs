@@ -23,6 +23,8 @@ public class PlayerShip : MonoBehaviour {
 
     protected float overheatTimer;
     protected bool overheated;
+
+    public HomeBase homeBase;
 	
 	void Update () {
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
@@ -65,6 +67,7 @@ public class PlayerShip : MonoBehaviour {
 	            var bullet = (Bullet) Instantiate(bulletPrefab, transform.position + transform.up * 0.25f + transform.right * Random.Range(-0.1f, 0.1f), Quaternion.identity);
 	            bullet.direction = velocity.normalized;
 	            bullet.mothership = transform;
+	            bullet.homeBase = homeBase;
                 audio.PlayOneShot(shootSfx, 0.4f);
 	        }
 	    } else if (overheatTimer > 0) {

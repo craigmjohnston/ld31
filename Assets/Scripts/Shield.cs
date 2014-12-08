@@ -13,6 +13,10 @@ public class Shield : MonoBehaviour {
     protected float cooldownTimer;
     protected int currentHealth;
 
+    void Start() {
+        currentHealth = health;
+    }
+
     void Update() {
         if (cooldownTimer > 0) {
             if (progressImage != null) {
